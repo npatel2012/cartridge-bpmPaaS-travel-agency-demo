@@ -155,11 +155,12 @@ mv -v target/*.war ${OPENSHIFT_BPMS_DIR}standalone/deployments/
 
 # Project refernces.
 cd ../specialtripsagency
+pwd
 
 # Replace all references to localhost
 echo "Starting find references..."
 echo
-find -v . -name '*.bpmn2' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
+find . -name '*.bpmn2' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
 echo
 echo "Done fixing bpmn2..."
 
