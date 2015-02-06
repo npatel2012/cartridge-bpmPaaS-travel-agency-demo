@@ -154,10 +154,14 @@ mvn clean package
 mv -v target/*.war ${OPENSHIFT_BPMS_DIR}standalone/deployments/
 
 # Project refernces.
-cd ../specialtripsagency
+cd -v ../specialtripsagency
 
 # Replace all references to localhost
-find . -name '*.bpmn2' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
+echo "Starting find references..."
+echo
+find -v . -name '*.bpmn2' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
+echo
+echo "Done fixing bpmn2..."
 
 git add .
 git commit -m 'Fixed references'
