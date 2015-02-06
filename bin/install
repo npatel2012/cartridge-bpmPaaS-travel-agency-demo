@@ -154,7 +154,7 @@ mvn clean package
 mv -v target/*.war ${OPENSHIFT_BPMS_DIR}standalone/deployments/
 
 # Project refernces.
-cd -v ../specialtripsagency
+cd ../specialtripsagency
 
 # Replace all references to localhost
 echo "Starting find references..."
