@@ -123,6 +123,10 @@ mv ${OPENSHIFT_BPMS_DIR}/versions/${version}/initial ${OPENSHIFT_BPMS_DIR}/stand
 # Unzip initial repositories and delete zip files 
 pushd $OPENSHIFT_BPMS_DIR/standalone/configuration/initial > /dev/null
 
+echo
+echo "Changing flight service references from localhost to $OPENSHIFT_BPMS_IP"
+echo
+
 # Flight Service
 cd acme-demo-flight-service
 
@@ -133,6 +137,10 @@ find . -name '*.wsdl' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_
 mvn clean package
 mv -v target/*.war ${OPENSHIFT_BPMS_DIR}standalone/deployments/
 
+echo
+echo "Changing hotel service references from localhost to $OPENSHIFT_BPMS_IP"
+echo
+
 # Hotel Service
 cd ../acme-demo-hotel-service
 
@@ -142,6 +150,10 @@ find . -name '*.wsdl' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_
 # build and deploy flight service
 mvn clean package
 mv -v target/*.war ${OPENSHIFT_BPMS_DIR}standalone/deployments/
+
+echo
+echo "Changing web app references from localhost to $OPENSHIFT_BPMS_IP"
+echo
 
 # Client Web App
 cd ../external-client-ui-form
@@ -159,14 +171,14 @@ unzip specialtripsagency.zip
 rm *.zip
 cd specialtripsagency
 
+echo
+echo "Changing all service task references from localhost to $OPENSHIFT_BPMS_IP"
+echo
+
 # Replace all references to localhost
-echo "Starting find references..."
-echo
-find . -name '*.bpmn2' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
-#find . -name 'compensateService.bpmn2' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
-#find . -name 'specialtripsagencyprocess.bpmn2' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
-echo
-echo "Done fixing bpmn2..."
+#find . -name '*.bpmn2' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
+find . -name 'compensateService.bpmn2' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
+find . -name 'specialtripsagencyprocess.bpmn2' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
 
 git add .
 git commit -m 'Fixed references'
