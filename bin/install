@@ -131,7 +131,7 @@ find . -name '*.wsdl' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_
 
 # build and deploy flight service
 mvn clean package
-mv -v target/*.war ${OPENSHIFT_BPMS_DIR}/standalone/deployments/
+mv -v target/*.war ${OPENSHIFT_BPMS_DIR}standalone/deployments/
 
 # Hotel Service
 cd ../acme-demo-hotel-service
@@ -141,7 +141,7 @@ find . -name '*.wsdl' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_
 
 # build and deploy flight service
 mvn clean package
-mv -v target/*.war ${OPENSHIFT_BPMS_DIR}/standalone/deployments/
+mv -v target/*.war ${OPENSHIFT_BPMS_DIR}standalone/deployments/
 
 # Client Web App
 cd ../external-client-ui-form
@@ -151,7 +151,7 @@ find . -name 'BpmsClientThread.java' -type f -print0 | xargs -0 sed -i "s/localh
 
 # build and deploy flight service
 mvn clean package
-mv -v target/*.war ${OPENSHIFT_BPMS_DIR}/standalone/deployments/
+mv -v target/*.war ${OPENSHIFT_BPMS_DIR}standalone/deployments/
 
 # Project refernces.
 cd ../specialtripsagency
