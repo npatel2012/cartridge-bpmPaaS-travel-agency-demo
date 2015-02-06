@@ -28,9 +28,6 @@ ln -s ${OPENSHIFT_BPMS_DIR}/template/${OPENSHIFT_BPMS_CONFIG_PATH}/settings.xml 
 
 ln -s ${OPENSHIFT_BPMS_DIR}/versions/${version}/standalone/deployments/dashbuilder.war ${OPENSHIFT_BPMS_DIR}/standalone/deployments/dashbuilder.war
 ln -s ${OPENSHIFT_BPMS_DIR}/versions/${version}/standalone/deployments/business-central.war ${OPENSHIFT_BPMS_DIR}/standalone/deployments/business-central.war
-ln -s ${OPENSHIFT_BPMS_DIR}/versions/${version}/standalone/deployments/acme-flight-service-1.0.war ${OPENSHIFT_BPMS_DIR}/standalone/deployments/acme-flight-service-1.0.war
-ln -s ${OPENSHIFT_BPMS_DIR}/versions/${version}/standalone/deployments/acme-hotel-service-1.0.war ${OPENSHIFT_BPMS_DIR}/standalone/deployments/acme-hotel-service-1.0.war
-ln -s ${OPENSHIFT_BPMS_DIR}/versions/${version}/standalone/deployments/external-client-ui-form-1.0.war ${OPENSHIFT_BPMS_DIR}/standalone/deployments/external-client-ui-form-1.0.war
 ln -s ${OPENSHIFT_BPMS_DIR}/versions/${version}/standalone/deployments/dashbuilder.war.dodeploy ${OPENSHIFT_BPMS_DIR}/standalone/deployments/dashbuilder.war.dodeploy
 ln -s ${OPENSHIFT_BPMS_DIR}/versions/${version}/standalone/deployments/business-central.war.dodeploy ${OPENSHIFT_BPMS_DIR}/standalone/deployments/business-central.war.dodeploy
 
@@ -49,9 +46,6 @@ popd 1> /dev/null
 
 # Disable Openshift management
 set_env_var DISABLE_OPENSHIFT_MANAGED_SERVER_CONFIG true ~/.env/user_vars
-
-# add in generic loan demo
-ln -s ${OPENSHIFT_BPMS_DIR}/versions/${version}/standalone/data/bpm-suite-demo-niogit ${OPENSHIFT_BPMS_DIR}/standalone/data/.niogit
 
 # Set usernames, generate passwords and create env variables
 echo 'Generating username and password'
@@ -120,6 +114,54 @@ echo "${root_username}=admin" >> $BPMS_ROLES_PATH
 # In post_install script, this symlinks will point the developer repository location in cartridge working directory.
 cp -v $BPMS_USERS_PATH "${OPENSHIFT_BPMS_DIR}/standalone/configuration/${OPENSHIFT_BPMS_USERS_FILE}"
 cp -v $BPMS_ROLES_PATH "${OPENSHIFT_BPMS_DIR}/standalone/configuration/${OPENSHIFT_BPMS_ROLES_FILE}"
+
+echo "Installing samples..."
+
+# Move initial repositories to configuration 
+mv ${OPENSHIFT_BPMS_DIR}/versions/${version}/initial ${OPENSHIFT_BPMS_DIR}/standalone/configuration
+
+# Unzip initial repositories and delete zip files 
+pushd $OPENSHIFT_BPMS_DIR/standalone/configuration/initial > /dev/null
+
+# Flight Service
+cd acme-demo-flight-service
+
+# Replace all references to localhost
+find . -name '*.wsdl' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
+
+# build and deploy flight service
+mvn clean package
+mv target/*.war ../../deployments/
+
+# Hotel Service
+cd ../acme-demo-hotel-service
+
+# Replace all references to localhost
+find . -name '*.wsdl' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
+
+# build and deploy flight service
+mvn clean package
+mv target/*.war ../../deployments/
+
+# Client Web App
+cd ../external-client-ui-form
+
+# Replace all references to localhost
+find . -name '*.java' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
+
+# build and deploy flight service
+mvn clean package
+mv target/*.war ../../deployments/
+
+# Project refernces.
+cd ../specialtripsagency
+
+# Replace all references to localhost
+find . -name '*.bpmn2' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
+
+git add .
+git commit -m 'Fixed references'
+popd 1> /dev/null
 
 client_result ""
 client_result "Red Hat JBoss BPM Suite ${version} cartridge installed.  Please make note of these credentials:"
