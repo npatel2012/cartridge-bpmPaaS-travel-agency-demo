@@ -27,7 +27,7 @@ Booking a trip to Edinburgh (just one scenario)
 1. Build & deploy project.
 
 2. Start process with following data in start form (either from JBoss BPM Suite dashboard or using external client
-	 UI deployed at [http://jbosstravelagency-${your-domain}.rhcloud.com:8080/external-client-ui-form-1.0](http://localhost:8080/external-client-ui-form-1.0)):
+	 UI deployed at http://travelagency-${your-domain}.rhcloud.com:8080/external-client-ui-form-1.0
 
   ```
   Name: [your-name]
@@ -47,7 +47,7 @@ Booking a trip to Edinburgh (just one scenario)
   Other Details / Notes: [any-text]
   ```
 
-3. Login to [http://jbosstravelagency-${your-domain}.rhcloud.com:8080/business-central](http://jbosstravelagency-${your-domain}.rhcloud.com:8080/business-central)
+3. Login to http://travelagency-${your-domain}.rhcloud.com:8080/business-central
 
   ```
   - login for admin role (u:erics / p:bpmsuite1!)
