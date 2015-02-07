@@ -176,7 +176,8 @@ echo "Changing all service task references from localhost to $OPENSHIFT_BPMS_IP"
 echo
 
 # Replace all references to localhost
-sed -i "s/localhost/${OPENSHIFT_BPMS_IP}/g" specialtripsagencyproject/src/main/resources/specialtripsagencyprocess.bpmn2
+sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g" specialtripsagencyproject/src/main/resources/specialtripsagencyprocess.bpmn2
+sed -i "s/:8080/$OPENSHIFT_BPMS_IP:8080/g" specialtripsagencyproject/src/main/resources/specialtripsagencyprocess.bpmn2
 sed -i "s/localhost/${OPENSHIFT_BPMS_IP}/g" specialtripsagencyproject/src/main/resources/compensateService.bpmn2
 
 git add .
