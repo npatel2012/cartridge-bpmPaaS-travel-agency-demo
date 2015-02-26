@@ -86,11 +86,26 @@ Or if you want to use the [rhc command line](https://www.openshift.com/developer
 
 For more information on the [JBoss BPM Travel Agency Demo see here] (https://github.com/jbossdemocentral/bpms-travel-agency-demo).
 
+
 Supporting Articles
 -------------------
-[Rocket into the Clouds with OpenShift bpmPaaS Quickstarts](http://www.schabell.org/2014/10/red-hat-openshift-bpmpaas-automated-demo-projects-updated.html)
+[Slides from webinar - How to excite the travel industry with a BPM story](http://www.schabell.org/2015/02/slides-webinar-jboss-bpm-travel-agency.html)
 
-[Red Hat OpenShift bpmPaaS - JBoss BPM Travel Agency now flying you to the Cloud] ()
+[Webinar - How to Excite the Travel Industry with a BPM Story](http://www.schabell.org/2015/02/webinar-how-to-excite-travel-industry.html)
+
+[Quickest Way into the Clouds with JBoss BPM Travel Agency](http://www.schabell.org/2015/02/into-clouds-with-jboss-bpm-travel-agency.html)
+
+[How to fly with the JBoss BPM Travel Agency (video 4 of 4)](http://www.schabell.org/2015/02/how-to-fly-with-jboss-bpm-travel-agency-part4.html)
+
+[How to fly with the JBoss BPM Travel Agency (video 3 of 4)](http://www.schabell.org/2015/01/how-to-fly-with-jboss-bpm-travel-agency-part3.html)
+
+[How to fly with the JBoss BPM Travel Agency (video 2 of 4)](http://www.schabell.org/2015/01/how-to-fly-with-jboss-bpm-travel-agency-part2.html)
+
+[How to Fly with the JBoss BPM Travel Agency (video 1 of4)](http://www.schabell.org/2015/01/how-to-fly-with-jboss-bpm-travel-agency.html)
+
+[3 Reasons You Need The New JBoss Travel Agency](http://www.schabell.org/2014/12/3-reasons-you-need-new-jboss-travel-agency.html)
+
+[How To Excite the Travel Industry With a BPM Story](http://www.schabell.org/2014/10/how-to-excite-travel-agencies-with-bpm-story.html)
 
 
 Released versions
