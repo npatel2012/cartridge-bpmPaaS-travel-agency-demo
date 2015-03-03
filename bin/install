@@ -161,6 +161,10 @@ cd ../external-client-ui-form
 # Replace all references to localhost
 find . -name 'BpmsClientThread.java' -type f -print0 | xargs -0 sed -i "s/localhost/$OPENSHIFT_BPMS_IP/g"
 
+# Replace default bpms username and password with updated username and password
+find . -name 'BpmsClientThread.java' -type f -print0 | xargs -0 sed -i "s/erics/$bpmadmin_username/g" 
+find . -name 'BpmsClientThread.java' -type f -print0 | xargs -0 sed -i "s/bpmsuite1\!/$bpmadmin_password/g" 
+
 # build and deploy flight service
 mvn clean package
 mv -v target/*.war ${OPENSHIFT_BPMS_DIR}standalone/deployments/

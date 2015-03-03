@@ -7,7 +7,7 @@ Install with one click in xPaaS (bpmPaaS)
 -----------------------------------------
 After clicking button, ensure `Gear` size is set to `medium`:
 
-[![Click to install OpenShift](http://launch-shifter.rhcloud.com/launch/light/Install bpmPaaS.svg)](https://openshift.redhat.com/app/console/application_type/custom?&cartridges[]=https://raw.githubusercontent.com/jbossdemocentral/cartridge-bpmPaaS-travel-agency-demo/master/metadata/manifest.yml&name=travelagency&gear_profile=medium&initial_git_url=)
+[![Click to install OpenShift](http://launch-shifter.rhcloud.com/launch/light/Install bpmPaaS.svg)](https://openshift.redhat.com/app/console/application_type/custom?&cartridges[]=https://raw.githubusercontent.com/npatel2012/cartridge-bpmPaaS-travel-agency-demo/master/metadata/manifest.yml&name=travelagency&gear_profile=medium&initial_git_url=)
 
 Once installed you can use the JBoss BPM Suite logins: 
 
@@ -82,9 +82,9 @@ Manual setup on OpenShift
 -------------------------
 Or if you want to use the [rhc command line](https://www.openshift.com/developers/rhc-client-tools-install) type:
 
-    rhc app create -g medium <APP NAME> https://raw.githubusercontent.com/jbossdemocentral/cartridge-bpmPaaS-travel-agency-demo/master/metadata/manifest.yml
+    rhc app create -g medium <APP NAME> https://raw.githubusercontent.com/npatel2012/cartridge-bpmPaaS-travel-agency-demo/master/metadata/manifest.yml
 
-For more information on the [JBoss BPM Travel Agency Demo see here] (https://github.com/jbossdemocentral/bpms-travel-agency-demo).
+For more information on the [JBoss BPM Travel Agency Demo see here] (https://github.com/npatel2012/bpms-travel-agency-demo).
 
 
 Supporting Articles
@@ -115,5 +115,5 @@ See the tagged releases for the following versions of the product:
 - v1.0 - bpmPaaS on OpenShift cartridge, JBoss BPM Suite 6.0.2 and JBoss BPM Travel Agency demo installed.
 
 
-![Digital Sign Annoucement](https://github.com/jbossdemocentral/bpms-travel-agency-demo/blob/master/docs/demo-images/cloud-sign.jpg?raw=true)
+![Digital Sign Annoucement](https://github.com/npatel2012/bpms-travel-agency-demo/blob/master/docs/demo-images/cloud-sign.jpg?raw=true)
 
